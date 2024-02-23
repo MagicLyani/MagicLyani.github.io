@@ -1,161 +1,132 @@
 <!DOCTYPE html>
 <html>
-<body>
-<script>
-    const glory100 = 655;
-    const minglory100 = glory100 * 1.111111;
-    function Calculate() {
-        const button1 = document.getElementById("Calc");
-        let lvl = document.getElementById("Plvl").value;
-        let ap = document.getElementById("PrimAP").value;
-        let rules = document.getElementById("Rules").checked;
-        if (lvl >= 25 && lvl <=1000 && ap >= 50 && ap <= 2000 && rules) {
-            button1.style.visibility = "visible";
-        } else {
-            button1.style.visibility = "hidden";
-        }
-    }
-    function Swap() { 
-        const button1 = document.getElementById("Calc");
-        const txtbx_lvl = document.getElementById("Plvl");
-        const txtbx_ap = document.getElementById("PrimAP");
-        const result = document.getElementById("result");
-        let status = button1.innerText;
-        if (status == "Calculate") {
-            let lvl = txtbx_lvl.value;
-            let ap = txtbx_ap.value;
-            let lvlmin;
-            let lvlmax;
-            if (lvl >= glory100 && lvl < minglory100) {
-                lvlmin = lvl * 0.9;
-                lvlmax = 999;
-            } else if (lvl >= minglory100) {
-                lvlmin = glory100;
-                lvlmax = 999;
-            } else {
-                lvlmin = lvl * 0.9;
-                lvlmax = lvl * 1.1;
-            }
-            const ID = ["Player", "PlayerMin", "PlayerMax", "DP1", "DPmin1", "DPmax1", "DP2", "DPmin2", "DPmax2", "DP3", "DPmin3", "DPmax3"];
-            let stats = [lvl, lvlmin, lvlmax, ap*2, ap*1.8, ap*2.2, ap*1.5, ap*1.35, ap*1.65, ap, ap*0.9, ap*1.1];
-            if (stats.length === ID.length) {
-                for (let i = 0; i < stats.length; i++) {
-                    document.getElementById(ID[i]).innerHTML = Math.round(stats[i]);
-                }
-            }
-            result.style.display = "inline-block";
-            document.getElementById("Guideline").style.display = "none";
-            button1.innerHTML = "Reset";
-        } else if (status == "Reset") {
-            txtbx_lvl.value = "";
-            txtbx_ap.value ="";
-            result.style.display = "none";
-            button1.innerHTML = "Calculate";
-        }
-    }
-    function guidelines() {
-        let rules = document.getElementById("Guideline").style.display;
-        if (rules == "none") {
-            document.getElementById("Guideline").style.display = "block";
-        } else if (rules == "block") {
-            document.getElementById("Guideline").style.display = "none";
-        }
-    }
-</script>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+    <script src="/Tools/Swap-calc.html"></script>
+</head>
 <style>
-    table, th, td {
-      border: 2px solid orange;
-      padding: 5px;
-      text-align: center;
+    table,
+    th,
+    td {
+        border: 2px solid orange;
+        padding: 5px;
+        text-align: center;
     }
+
     th {
         color: orange;
     }
+
     table {
-      border-collapse: collapse;
+        border-collapse: collapse;
     }
-    .reset, .reset * {
+
+    .reset,
+    .reset * {
         all: revert;
     }
+
     .click {
         color: orange;
         text-decoration-line: underline;
         font-weight: bold;
     }
+
     .layout {
         display: block;
         padding: 5px;
     }
+
     .Rules {
-        display:none;
+        display: none;
     }
 </style>
-<div id="Guideline" style="display:block">
-    <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap with <b>optimal glory on both sides!</b></br></br>
-    Fill in your player level and <b>the AP your primarch has at the swap location</b>.</br>
-    Check the box that you have read these guidelines and understand them.</br></br>
-    After that you can click the calculate button to get the results.</br>
-    The results are displayed in a table with the columns displaying the target's player level and the DP to look for when using 1/2/3 dragons.</br>
-    The rows display the corresponding minimum, perfect and maximum values.</br></br>
-    <span style="color: red"><b>If your target is anywhere outside these values you are either giving your target bad glory or you will be getting bad glory!</b></span></p>
+
+<body>
+    <div w3-include-html="/navbar.html"></div>
+    <script>
+        includeHTML();
+    </script>
+    <div id="Guideline" style="display:block">
+        <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap
+            with
+            <b>optimal glory on both sides!</b></br></br>
+            Fill in your player level and <b>the AP your primarch has at the swap location</b>.</br>
+            Check the box that you have read these guidelines and understand them.</br></br>
+            After that you can click the calculate button to get the results.</br>
+            The results are displayed in a table with the columns displaying the target's player level and the DP to
+            look
+            for when using 1/2/3 dragons.</br>
+            The rows display the corresponding minimum, perfect and maximum values.</br></br>
+            <span style="color: red"><b>If your target is anywhere outside these values you are either giving your
+                    target
+                    bad glory or you will be getting bad glory!</b></span>
+        </p>
     </div>
-<div class="layout">
-    <table class="reset">
-        <tr>
-            <td>
-                <label for="Plvl">Player Level:</label>
-            </td>
-            <td>
-                <input type="number" id="Plvl" name="Player LvL" min="25" max="1000" oninput="Calculate()">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="PrimAP">Primarch AP:</label>
-            </td>
-            <td>
-                <input type="number" id="PrimAP" min="50" max="2000" oninput="Calculate()">
-            </td>
-        </tr>
-    </table>
-</br>
-<input id="Rules" type="checkbox" onchange="Calculate()"></input>I have read the <span class="click" onclick="guidelines()">Glory Swap Guidelines</span> and I understand them!
-</br></br>
-<button id="Calc" type="button" onclick="Swap()" style="visibility:hidden">Calculate</button>
-</div>
-<div class="layout">
-    <div id="result" style="display:none">
-        <table>
+    <div class="layout">
+        <table class="reset">
             <tr>
-                <th></th>
-                <th>Player LvL</th>
-                <th>1 Dragon</th>
-                <th>2 Dragons</th>
-                <th>3 Dragons</th>
+                <td>
+                    <label for="Plvl">Player Level:</label>
+                </td>
+                <td>
+                    <input type="number" id="Plvl" name="Player LvL" min="25" max="1000" oninput="Calculate()">
+                </td>
             </tr>
             <tr>
-                <th>Min</th>
-                <td id="PlayerMin"></td>
-                <td id="DPmin1"></td>
-                <td id="DPmin2"></td>
-                <td id="DPmin3"></td>
-            </tr>
-            <tr>
-                <th>Perfect</th>
-                <td id="Player"></td>
-                <td id="DP1"></td>
-                <td id="DP2"></td>
-                <td id="DP3"></td>
-            </tr>
-            <tr>
-                <th>Max</th>
-                <td id="PlayerMax"></td>
-                <td id="DPmax1"></td>
-                <td id="DPmax2"></td>
-                <td id="DPmax3"></td>
+                <td>
+                    <label for="PrimAP">Primarch AP:</label>
+                </td>
+                <td>
+                    <input type="number" id="PrimAP" min="50" max="2000" oninput="Calculate()">
+                </td>
             </tr>
         </table>
+        </br>
+        <input id="Rules" type="checkbox" onchange="Calculate()"></input>I have read the <span class="click"
+            onclick="guidelines()">Glory Swap Guidelines</span> and I understand them!
+        </br></br>
+        <button id="Calc" type="button" onclick="Swap()" style="visibility:hidden">Calculate</button>
     </div>
-</div>
+    <div class="layout">
+        <div id="result" style="display:none">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Player LvL</th>
+                    <th>1 Dragon</th>
+                    <th>2 Dragons</th>
+                    <th>3 Dragons</th>
+                </tr>
+                <tr>
+                    <th>Min</th>
+                    <td id="PlayerMin"></td>
+                    <td id="DPmin1"></td>
+                    <td id="DPmin2"></td>
+                    <td id="DPmin3"></td>
+                </tr>
+                <tr>
+                    <th>Perfect</th>
+                    <td id="Player"></td>
+                    <td id="DP1"></td>
+                    <td id="DP2"></td>
+                    <td id="DP3"></td>
+                </tr>
+                <tr>
+                    <th>Max</th>
+                    <td id="PlayerMax"></td>
+                    <td id="DPmax1"></td>
+                    <td id="DPmax2"></td>
+                    <td id="DPmax3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
