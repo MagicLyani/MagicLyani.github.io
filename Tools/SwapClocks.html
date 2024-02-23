@@ -1,322 +1,135 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../style.css">
-    <script src="../index.js"></script>
-    <script>
-        function includeHTML() {
-            var z, i, elmnt, file, xhttp;
-            /* Loop through a collection of all HTML elements: */
-            z = document.getElementsByTagName("*");
-            for (i = 0; i < z.length; i++) {
-                elmnt = z[i];
-                /*search for elements with a certain atrribute:*/
-                file = elmnt.getAttribute("w3-include-html");
-                if (file) {
-                    /* Make an HTTP request using the attribute value as the file name: */
-                    xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4) {
-                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
-                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
-                            /* Remove the attribute, and call this function once more: */
-                            elmnt.removeAttribute("w3-include-html");
-                            includeHTML();
-                        }
-                    }
-                    xhttp.open("GET", file, true);
-                    xhttp.send();
-                    /* Exit the function: */
-                    return;
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+    <script src="/Tools/Swap-clocks.js"></script>
 </head>
+<style>
+    .div {
+        border-style: solid;
+        border-color: orange;
+        border-width: 2px;
+        border-radius: 10px;
+        padding: 10px;
+        display: block;
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td {
+        width: 20%;
+    }
+</style>
+
 <body>
-    <div w3-include-html="../navbar.html"></div>
+    <div w3-include-html="/navbar.html"></div>
     <script>
-        var Destroyer = [3,6,10,13,17,20,24,27];
-        var Taunter = [2,5,9,12,16,19,23,26];
-        var SiegerTrapper = [1,4,7,8,11,14,15,18,21,22,25,28];
-        function Primarch(Type){
-            var checkBox = document.getElementById(Type);
-            if (Type == "Destroyer") {
-                for (var i = 0; i < Destroyer.length; i++) {
-                    var box = document.getElementById(Destroyer[i]);
-                    if (checkBox.checked == true) {
-                        box.style.display = "block";
-                    } else {
-                        box.style.display = "none";
-                    }
-                }
-            } else if (Type == "Taunter") {
-                for (var i = 0; i < Taunter.length; i++) {
-                    var box = document.getElementById(Taunter[i]);
-                    if (checkBox.checked == true) {
-                        box.style.display = "block";
-                    } else {
-                        box.style.display = "none";
-                    }
-                }
-            } else if (Type == "Sieger" || Type == "Trapper") {
-                var box2 = "Empty";
-                if (Type == "Trapper"){
-                    box2 = document.getElementById("Sieger");
-                } else if (Type == "Sieger") {
-                    box2 = document.getElementById("Trapper");
-                }
-                for (var i = 0; i < SiegerTrapper.length; i++) {
-                    var box = document.getElementById(SiegerTrapper[i]);
-                    if (checkBox.checked == true) {
-                        box.style.display = "block";
-                        box2.checked = true;
-                    } else {
-                        box.style.display = "none";
-                        box2.checked = false;
-                    }
-                }
-            }
-        };
+        includeHTML();
     </script>
-    <style>
-        .div {
-          border-style: solid;
-          border-color: orange;
-          border-width: 2px;
-          border-radius: 10px;
-          padding: 10px;
-          display: block;
-          width: 650px;
-        }
-        table {
-            width:100%;
-        }
-        td {
-            width:25%;
-        }
-    </style>
+    <button type="button"
+        onclick="Primarch(this.textContent); if(this.textContent === 'Clear all') {this.textContent = 'Check all'} else {this.textContent = 'Clear all'};">Clear
+        all</button>
     <table>
         <tr>
             <td>
-                <label for="Destroyer">Destroyer:</label> 
-                <input type="checkbox" id="Destroyer" onclick="Primarch(this.id)" checked>
+                <label for="Guards">Guards:</label>
+                <input type="checkbox" id="Guards" onclick="Primarch(this.id)" checked>
             </td>
             <td>
-                <label for="Taunter">Taunter:</label> 
+                <label for="Taunter">Taunter:</label>
                 <input type="checkbox" id="Taunter" onclick="Primarch(this.id)" checked>
             </td>
             <td>
-                <label for="Trapper">Trapper:</label> 
+                <label for="Destroyer">Destroyer:</label>
+                <input type="checkbox" id="Destroyer" onclick="Primarch(this.id)" checked>
+            </td>
+            <td>
+                <label for="Trapper">Trapper:</label>
                 <input type="checkbox" id="Trapper" onclick="Primarch(this.id)" checked>
             </td>
             <td>
-                <label for="Sieger">Sieger:</label> 
+                <label for="Sieger">Sieger:</label>
                 <input type="checkbox" id="Sieger" onclick="Primarch(this.id)" checked>
             </td>
         </tr>
     </table>
+    <div id="0"></div>
     <div id="1" class="div">
-        Swap 1, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/20/2023&mt=8.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        Swap 1, <b>Destroyers, Trappers and Siegers only!</b>
+        <br />
+        Hosted by MountainRain @ WindyPeaks ( X:-206.0 Y:124.5 )
+        <br /><br />
+        MountainRain will drop shields at random times throughout the duration of the main game's PvP event. If you see
+        the shield is down, announce it via an <b>@group</b> in team chat.
     </div>
     <div id="2" class="div">
         Swap 2, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/20/2023&mt=7.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        <br />
+        Hosted by HotTubParty @ ThisIsTheSpot ( X:297.0 Y:748.5 )
+        <br /><br />
+        <span class="wtb-ew-v1" style="width: 560px; display:inline-block">
+            <script
+                src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=2/22/2024&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script>
+            <i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i>
+            <script>window[wtb_event_widgets.pop()].init()</script>
+        </span>
     </div>
     <div id="3" class="div">
-        Swap 3, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/20/2023&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        Swap 3, <b>Taunters only!</b>
+        <br />
+        Hosted by HotTubParty @ ThisIsTheSpot ( X:297.0 Y:748.5 )
+        <br /><br />
+        <span class="wtb-ew-v1" style="width: 560px; display:inline-block">
+            <script
+                src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=2/23/2024&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script>
+            <i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i>
+            <script>window[wtb_event_widgets.pop()].init()</script>
+        </span>
     </div>
     <div id="4" class="div">
-        Swap 4, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/20/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        Swap 4, <b>Taunters only!</b>
+        <br />
+        Hosted by HotTubParty @ ThisIsTheSpot ( X:297.0 Y:748.5 )
+        <br /><br />
+        <span class="wtb-ew-v1" style="width: 560px; display:inline-block">
+            <script
+                src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=2/24/2024&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script>
+            <i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i>
+            <script>window[wtb_event_widgets.pop()].init()</script>
+        </span>
     </div>
     <div id="5" class="div">
         Swap 5, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/20/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        <br />
+        Hosted by HotTubParty @ ThisIsTheSpot ( X:297.0 Y:748.5 )
+        <br /><br />
+        <span class="wtb-ew-v1" style="width: 560px; display:inline-block">
+            <script
+                src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=2/25/2024&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script>
+            <i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i>
+            <script>window[wtb_event_widgets.pop()].init()</script>
+        </span>
     </div>
     <div id="6" class="div">
-        Swap 6, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/20/2023&mt=20.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
+        Swap 6, <b>Taunters only!</b>
+        <br />
+        Hosted by HotTubParty @ ThisIsTheSpot ( X:297.0 Y:748.5 )
+        <br /><br />
+        <span class="wtb-ew-v1" style="width: 560px; display:inline-block">
+            <script
+                src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=2/26/2024&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script>
+            <i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i>
+            <script>window[wtb_event_widgets.pop()].init()</script>
+        </span>
     </div>
-    <div id="7" class="div">
-        Swap 7, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/20/2023&mt=21.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="8" class="div">
-        Swap 8, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/21/2023&mt=8.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="9" class="div">
-        Swap 9, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/21/2023&mt=7.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="10" class="div">
-        Swap 10, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/21/2023&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="11" class="div">
-        Swap 11, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/21/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="12" class="div">
-        Swap 12, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/21/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="13" class="div">
-        Swap 13, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/21/2023&mt=20.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="14" class="div">
-        Swap 14, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/21/2023&mt=21.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="15" class="div">
-        Swap 15, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/22/2023&mt=8.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="16" class="div">
-        Swap 16, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/22/2023&mt=7.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="17" class="div">
-        Swap 17, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/22/2023&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="18" class="div">
-        Swap 18, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/22/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="19" class="div">
-        Swap 19, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/22/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="20" class="div">
-        Swap 20, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/22/2023&mt=20.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="21" class="div">
-        Swap 21, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/22/2023&mt=21.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="22" class="div">
-        Swap 22, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/23/2023&mt=8.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="23" class="div">
-        Swap 23, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/23/2023&mt=7.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="24" class="div">
-        Swap 24, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/23/2023&mt=9.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="25" class="div">
-        Swap 25, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/23/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="26" class="div">
-        Swap 26, <b>Taunters only!</b>
-        <br/>
-        Hosted by Undertale3527 @ KISS ( X:315.5 Y:-231.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=6&md=4/23/2023&mt=15.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="27" class="div">
-        Swap 27, <b>Destroyers only!</b>
-        <br/>
-        Hosted by HotTubParty @ Brainfreeze ( X:-655.5 Y:874.0 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/23/2023&mt=20.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <div id="28" class="div">
-        Swap 28, <b>Trappers and Siegers only!</b>
-        <br/>
-        Hosted by TitanDragons @ WindyCity ( X:164.5 Y:-243.5 )
-        <br/><br/>
-        <span class="wtb-ew-v1" style="width: 560px; display:inline-block"><script src="https://www.worldtimebuddy.com/event_widget.js?h=5&md=4/23/2023&mt=21.00&ml=2.00&sts=0&sln=0&wt=ew-ltc"></script><i><a target="_blank" href="https://www.worldtimebuddy.com/">Time converter</a> at worldtimebuddy.com</i><script>window[wtb_event_widgets.pop()].init()</script></span>
-    </div>
-    <script>
-        includeHTML();
-    </script>
 </body>
+
 </html>
