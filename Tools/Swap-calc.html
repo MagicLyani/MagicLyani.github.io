@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="HandheldFriendly" content="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="/index.js"></script>
-    <script src="/Tools/Swap-calc.html"></script>
-</head>
+<script src="./Tools/Swap-calc.html"></script>
 <style>
     table,
     th,
@@ -46,87 +36,78 @@
         display: none;
     }
 </style>
-
-<body>
-    <div w3-include-html="/navbar.html"></div>
-    <script>
-        includeHTML();
-    </script>
-    <div id="Guideline" style="display:block">
-        <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap
-            with
-            <b>optimal glory on both sides!</b></br></br>
-            Fill in your player level and <b>the AP your primarch has at the swap location</b>.</br>
-            Check the box that you have read these guidelines and understand them.</br></br>
-            After that you can click the calculate button to get the results.</br>
-            The results are displayed in a table with the columns displaying the target's player level and the DP to
-            look
-            for when using 1/2/3 dragons.</br>
-            The rows display the corresponding minimum, perfect and maximum values.</br></br>
-            <span style="color: red"><b>If your target is anywhere outside these values you are either giving your
-                    target
-                    bad glory or you will be getting bad glory!</b></span>
-        </p>
-    </div>
-    <div class="layout">
-        <table class="reset">
+<div id="Guideline" style="display:block">
+    <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap
+        with
+        <b>optimal glory on both sides!</b></br></br>
+        Fill in your player level and <b>the AP your primarch has at the swap location</b>.</br>
+        Check the box that you have read these guidelines and understand them.</br></br>
+        After that you can click the calculate button to get the results.</br>
+        The results are displayed in a table with the columns displaying the target's player level and the DP to
+        look
+        for when using 1/2/3 dragons.</br>
+        The rows display the corresponding minimum, perfect and maximum values.</br></br>
+        <span style="color: red"><b>If your target is anywhere outside these values you are either giving your
+                target
+                bad glory or you will be getting bad glory!</b></span>
+    </p>
+</div>
+<div class="layout">
+    <table class="reset">
+        <tr>
+            <td>
+                <label for="Plvl">Player Level:</label>
+            </td>
+            <td>
+                <input type="number" id="Plvl" name="Player LvL" min="25" max="1000" oninput="Calculate()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="PrimAP">Primarch AP:</label>
+            </td>
+            <td>
+                <input type="number" id="PrimAP" min="50" max="2000" oninput="Calculate()">
+            </td>
+        </tr>
+    </table>
+    </br>
+    <input id="Rules" type="checkbox" onchange="Calculate()"></input>I have read the <span class="click"
+        onclick="guidelines()">Glory Swap Guidelines</span> and I understand them!
+    </br></br>
+    <button id="Calc" type="button" onclick="Swap()" style="visibility:hidden">Calculate</button>
+</div>
+<div class="layout">
+    <div id="result" style="display:none">
+        <table>
             <tr>
-                <td>
-                    <label for="Plvl">Player Level:</label>
-                </td>
-                <td>
-                    <input type="number" id="Plvl" name="Player LvL" min="25" max="1000" oninput="Calculate()">
-                </td>
+                <th></th>
+                <th>Player LvL</th>
+                <th>1 Dragon</th>
+                <th>2 Dragons</th>
+                <th>3 Dragons</th>
             </tr>
             <tr>
-                <td>
-                    <label for="PrimAP">Primarch AP:</label>
-                </td>
-                <td>
-                    <input type="number" id="PrimAP" min="50" max="2000" oninput="Calculate()">
-                </td>
+                <th>Min</th>
+                <td id="PlayerMin"></td>
+                <td id="DPmin1"></td>
+                <td id="DPmin2"></td>
+                <td id="DPmin3"></td>
+            </tr>
+            <tr>
+                <th>Perfect</th>
+                <td id="Player"></td>
+                <td id="DP1"></td>
+                <td id="DP2"></td>
+                <td id="DP3"></td>
+            </tr>
+            <tr>
+                <th>Max</th>
+                <td id="PlayerMax"></td>
+                <td id="DPmax1"></td>
+                <td id="DPmax2"></td>
+                <td id="DPmax3"></td>
             </tr>
         </table>
-        </br>
-        <input id="Rules" type="checkbox" onchange="Calculate()"></input>I have read the <span class="click"
-            onclick="guidelines()">Glory Swap Guidelines</span> and I understand them!
-        </br></br>
-        <button id="Calc" type="button" onclick="Swap()" style="visibility:hidden">Calculate</button>
     </div>
-    <div class="layout">
-        <div id="result" style="display:none">
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Player LvL</th>
-                    <th>1 Dragon</th>
-                    <th>2 Dragons</th>
-                    <th>3 Dragons</th>
-                </tr>
-                <tr>
-                    <th>Min</th>
-                    <td id="PlayerMin"></td>
-                    <td id="DPmin1"></td>
-                    <td id="DPmin2"></td>
-                    <td id="DPmin3"></td>
-                </tr>
-                <tr>
-                    <th>Perfect</th>
-                    <td id="Player"></td>
-                    <td id="DP1"></td>
-                    <td id="DP2"></td>
-                    <td id="DP3"></td>
-                </tr>
-                <tr>
-                    <th>Max</th>
-                    <td id="PlayerMax"></td>
-                    <td id="DPmax1"></td>
-                    <td id="DPmax2"></td>
-                    <td id="DPmax3"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</body>
-
-</html>
+</div>
