@@ -1,3 +1,4 @@
+<script src="/Tools/Swap-clocks.js"></script>
 <style>
     .div {
         border-style: solid;
@@ -18,15 +19,8 @@
     }
 </style>
     <button type="button"
-        onclick="
-            Primarch(this.textContent);
-            if(this.textContent === 'Clear all') {
-                this.textContent = 'Check all';
-            } else {
-                this.textContent = 'Clear all';
-            }">
-        Clear all
-    </button>
+        onclick="Primarch(this.textContent); if(this.textContent === 'Clear all') {this.textContent = 'Check all'} else {this.textContent = 'Clear all'};">Clear
+        all</button>
     <table>
         <tr>
             <td>
