@@ -1,191 +1,21 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true" />
-    <!-- Bootstrap CSS 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style.css">
-    <script src="./index.js"></script>
+    <script src="/index.js"></script>
 </head>
-
 <body>
-    <!-- The overlay -->
-    <div id="myNav" class="overlay">
-
-        <!-- Button to close the overlay navigation -->
-        <span class="closebtn" onclick="closeNav()">&times;</span>
-
-        <!-- Overlay content -->
-        <div class="overlay-content">
-            <button class="accordion">
-                <h1>Main Game</h1>
-            </button>
-            <div class="panel">
-                <div class="div_menu_button">
-                    <button id="1" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Wars</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="2" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Base Building</h2>
-                    </button>
-                </div>
-            </div>
-            <button class="accordion">
-                <h1>Main Events</h1>
-            </button>
-            <div class="panel">
-                <div class="div_menu_button">
-                    <button id="3" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Temple Raid</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="4" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Team Gauntlet</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="5" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Crystal Caves</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="6" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Fight Pits</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="7" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Fortification</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="8" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Breeding</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="9" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Assault</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="10" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Dungeons</h2>
-                    </button>
-                </div>
-            </div>
-            <button class="accordion">
-                <h1>Atlas</h1>
-            </button>
-            <div class="panel">
-                <div class="div_menu_button">
-                    <button id="11" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Troop Management</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="12" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Sniping</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="13" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Raiding</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="14" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Glory Swapping</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="15" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Alert Bot</h2>
-                    </button>
-                </div>
-            </div>
-            <button class="accordion">
-                <h1>Atlas Events</h1>
-            </button>
-            <div class="panel">
-                <div class="div_menu_button">
-                    <button id="16" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Glory Hunt</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="17" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Troop Training</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="18" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Crafting</h2>
-                    </button>
-                </div>
-            </div>
-            <button class="accordion">
-                <h1>Tools</h1>
-            </button>
-            <div class="panel">
-                <div class="div_menu_button">
-                    <button id="19" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Swap Calculator</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="20" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Swap Countdown Clocks</h2>
-                    </button>
-                </div>
-                <div class="div_menu_button">
-                    <button id="21" class="menu_button" onclick="includeHTML(this.id);">
-                        <h2>Red's Breeding Path</h2>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Use any element to open/show the overlay navigation menu -->
-    <h1>
-        <span onclick="openNav()">&#9776; Open menu</span>
-    </h1>
-    <div id="Content">
-        Welcome to this Wiki
-    </div>
-    <!-- Bootstrap Bundle with Popper
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     -->
+    <div w3-include-html="/navbar.html"></div>
     <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-        function openNav() {
-            document.getElementById("myNav").style.width = "100%";
-        }
-
-        function closeNav() {
-            document.getElementById("myNav").style.width = "0%";
-        }
+        includeHTML();
     </script>
+    <button onclick="New_Wiki()">Click</button>
+    <div>
+        <p>X:<span id="X"></span></p>
+        <p>Y:<span id="Y"></span></p>
+    </div>
 </body>
-
 </html>
