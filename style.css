@@ -25,12 +25,16 @@
 a {
   font-style: normal;
   font-family: var(--font);
-  color: orange;
+  color: var(--orange);
   text-decoration: none;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  color: var(--orange);
 }
 
 .accordion {
