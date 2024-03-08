@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+    <script src="/Tools/Swap-clocks.js"></script>
+</head>
 <style>
     .div {
         border-style: solid;
@@ -17,16 +26,18 @@
         width: 20%;
     }
 </style>
+<body>
+    <div w3-include-html="/navbar.html"></div>
+    <script>
+        includeHTML();
+    </script>
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <h1>
+        <span onclick="openNav()">&#9776; Open menu</span>
+    </h1>
     <button type="button"
-        onclick="
-            Primarch(this.textContent);
-            if(this.textContent === 'Clear all') {
-                this.textContent = 'Check all';
-            } else {
-                this.textContent = 'Clear all';
-            }">
-        Clear all
-    </button>
+        onclick="Primarch(this.textContent); if(this.textContent === 'Clear all') {this.textContent = 'Check all'} else {this.textContent = 'Clear all'};">Clear
+        all</button>
     <table>
         <tr>
             <td>
@@ -120,3 +131,7 @@
             <script>window[wtb_event_widgets.pop()].init()</script>
         </span>
     </div>
+    <!-- Script needed for menu -->
+    <script src="/Menu.js"></script>
+</body>
+</html>

@@ -1,37 +1,63 @@
+:root{
+  --orange: orange;
+  --greybg: #505050;
+  --greybtn: #252525;
+  --greyacrdn: #353535;
+  --font:   Arial, Helvetica, sans-serif;
+}
+
 .menu_button {
-  border: 2px solid orange;
-  border-radius: 8px;
+  border: 5px solid var(--orange);
+  border-radius: 20px;
   width: 150px;
   height: 100px;
+  background-color: #252525;
   vertical-align:top;
 }
 
 .div_menu_button {
-  padding: 10px;
+  padding: 5px;
   display: inline-block;
+  overflow: clip;
+  
+}
+
+a {
+  font-style: normal;
+  font-family: var(--font);
+  color: var(--orange);
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: var(--orange);
 }
 
 .accordion {
-  background-color: #252525;
-  /*color: orange;*/
+  background-color: var(--greybtn);
+  color: var(--orange);
   cursor: pointer;
   /*padding: 18px;*/
   width: 100%;
   text-align: center;
   outline: none;
-  /*font-size: 15px;*/
+  font-size: 15px;
   transition: 0.4s;
 }
 
 .active,
 .accordion:hover {
-  background-color: #353535;
+  background-color: var(--greyacrdn);
 }
 
 .accordion:after {
   content: '\002B';
   font-size: 500%;
-  color: orange;
+  color: var(--orange);
   font-weight: bold;
   float: right;
   position: absolute;
@@ -44,15 +70,15 @@
 
 .panel {
   padding: 0 18px;
-  background-color: #505050;
+  background-color: var(--greybg);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 
-/*body {
-  background-color: #505050;
-}*/
+body {
+  background-color: var(--greybg);
+}
 
 /* The Overlay (background) */
 .overlay {
@@ -85,7 +111,7 @@
   /* 100% width */
   text-align: center;
   /* Centered text/links */
-  margin-top: 15px;
+  margin-top: 40px;
   /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
 
@@ -93,18 +119,13 @@
 .overlay span {
   text-decoration: none;
   font-size: 36px;
-  color: Orange;
+  color: var(--orange);
   display: block;
   /* Display block instead of inline */
   transition: 0.3s;
   /* Transition effects on hover (color) */
 }
 
-/* When you mouse over the navigation links, change their color */
-.overlay span:hover,
-.overlay span:focus {
-  color: #f1f1f1;
-}
 
 /* Position the close button (top right corner) */
 .overlay .closebtn {
@@ -116,9 +137,6 @@
 
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
 @media screen and (max-height: 450px) {
-  .overlay a {
-    font-size: 20px
-  }
 
   .overlay .closebtn {
     font-size: 40px;
