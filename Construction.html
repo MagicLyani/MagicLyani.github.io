@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true" />
+    <link rel="stylesheet" href="/style.css">
+    <script src="/index.js"></script>
+</head>
+<body>
+    <div w3-include-html="/navbar.html"></div>
+    <script>
+        includeHTML();
+    </script>
+    <!-- Open/show the overlay navigation menu and page title -->
+    <h1>
+        <span onclick="openNav()">&#9776; Welcome in the new Wiki!</span>
+    </h1>
+    <button onclick="New_Wiki()">Click</button>
+    <div>
+        <p>X:<span id="X"></span></p>
+        <p>Y:<span id="Y"></span></p>
+    </div>
+    <!-- Script needed for menu -->
+    <script>
+        function accordionmenu(x) {
+            x.classList.toggle("active");
+            var panel = x.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+</body>
+</html>

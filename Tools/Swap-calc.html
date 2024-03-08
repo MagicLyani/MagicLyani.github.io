@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="HandheldFriendly" content="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/style.css">
-    <script src="/index.js"></script>
-    <script src="/Tools/Swap-calc.html"></script>
-</head>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="HandheldFriendly" content="true" />
+        <link rel="stylesheet" href="/style.css">
+        <script src="/index.js"></script>
+        <script src="/Tools/Swap-calc.js"></script>
+    </head>
 <style>
     table,
     th,
@@ -46,26 +44,23 @@
         display: none;
     }
 </style>
-
 <body>
     <div w3-include-html="/navbar.html"></div>
     <script>
         includeHTML();
     </script>
+    <!-- Use any element to open/show the overlay navigation menu -->
+    <h1>
+        <span onclick="openNav()">&#9776; Open menu</span>
+    </h1>
     <div id="Guideline" style="display:block">
-        <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap
-            with
-            <b>optimal glory on both sides!</b></br></br>
+        <p>This calculator calculates the optimal player level and DP of the primarch to look for during a glory swap with <b>optimal glory on both sides!</b></br></br>
             Fill in your player level and <b>the AP your primarch has at the swap location</b>.</br>
             Check the box that you have read these guidelines and understand them.</br></br>
             After that you can click the calculate button to get the results.</br>
-            The results are displayed in a table with the columns displaying the target's player level and the DP to
-            look
-            for when using 1/2/3 dragons.</br>
+            The results are displayed in a table with the columns displaying the target's player level and the DP to look for when using 1/2/3 dragons.</br>
             The rows display the corresponding minimum, perfect and maximum values.</br></br>
-            <span style="color: red"><b>If your target is anywhere outside these values you are either giving your
-                    target
-                    bad glory or you will be getting bad glory!</b></span>
+            <span style="color: red"><b>If your target is anywhere outside these values you are either giving your target bad glory or you will be getting bad glory!</b></span>
         </p>
     </div>
     <div class="layout">
@@ -127,6 +122,7 @@
             </table>
         </div>
     </div>
+    <!-- Script needed for menu -->
+    <script src="/Menu.js"></script>
 </body>
-
 </html>

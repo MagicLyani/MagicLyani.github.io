@@ -1,61 +1,179 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./style.css">
-<div class="navbar">
-    <a href="/index.html">Home</a>
-    <div class="dropdown">
-        <button class="dropbtn">Main Game
-            <i class="fa fa-caret-down"></i>
+<div id="myNav" class="overlay">
+    <!-- Button to close the overlay navigation -->
+    <span class="closebtn" onclick="closeNav()">&times;</span>
+    <!-- Overlay content -->
+    <div class="overlay-content">
+        <button class="accordion" onclick="accordionmenu(this)">
+            <h1>Main Game</h1>
         </button>
-        <div class="dropdown-content">
-            <a href="/index.html">Wars</a>
-            <a href="/index.html">Base building</a>
+        <div class="panel">
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Wars</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Base Building</h2>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Main Events
-            <i class="fa fa-caret-down"></i>
+        <button class="accordion" onclick="accordionmenu(this)">
+            <h1>Main Events</h1>
         </button>
-        <div class="dropdown-content">
-            <a href="/index.html">Temple Raid</a>
-            <a href="/index.html">Team Gauntlet</a>
-            <a href="/index.html">Crystal Caves</a>
-            <a href="/index.html">Fight Pits</a>
-            <a href="/index.html">Fortification</a>
-            <a href="/index.html">Breeding</a>
-            <a href="/index.html">Assault</a>
-            <a href="/index.html">Dungeons</a>
+        <div class="panel">
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Temple Raid</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Team Gauntlet</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Crystal Caves</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Fight Pits</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Fortification</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Breeding</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Assault</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Dungeons</h2>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Atlas
-            <i class="fa fa-caret-down"></i>
+        <button class="accordion" onclick="accordionmenu(this)">
+            <h1>Atlas</h1>
         </button>
-        <div class="dropdown-content">
-            <a href="/index.html">Troop management</a>
-            <a href="/index.html">Sniping</a>
-            <a href="/index.html">Raiding</a>
-            <a href="/index.html">Glory Swaping</a>
-            <a href="/index.html">Alert bot</a>
+        <div class="panel">
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Troop Management</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Sniping</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Raiding</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Glory Swapping</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Alert Bot</h2>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Atlas Events
-            <i class="fa fa-caret-down"></i>
+        <button class="accordion" onclick="accordionmenu(this)">
+            <h1>Atlas Events</h1>
         </button>
-        <div class="dropdown-content">
-            <a href="/index.html">Glory Hunt</a>
-            <a href="/index.html">Troop Training</a>
-            <a href="/index.html">Crafting</a>
+        <div class="panel">
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Glory Hunt</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Troop Training</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Crafting</h2>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">Tools
-            <i class="fa fa-caret-down"></i>
+        <button class="accordion" onclick="accordionmenu(this)">
+            <h1>Tools</h1>
         </button>
-        <div class="dropdown-content">
-            <a href="/Tools/Swap-calc.html">Swap calculator</a>
-            <a href="/Tools/SwapClocks.html">Swap countdown clocks</a>
-            <a href="/index.html">Red's Breeding Path</a>
+        <div class="panel">
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Tools/Swap-calc.html">
+                        <h2>Swap Calculator</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Tools/SwapClocks.html">
+                        <h2>Swap Countdown Clocks</h2>
+                    </a>
+                </div>
+            </div>
+            <div class="div_menu_button">
+                <div class="menu_button">
+                    <a href="/Construction.html">
+                        <h2>Red's Breeding Path</h2>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
